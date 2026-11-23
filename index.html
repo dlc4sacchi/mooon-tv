@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#151613">
+  <title>MOOON Kebab | Menu TV</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="./player.js" defer></script>
+</head>
+<body>
+  <div class="shell">
+    <header class="masthead">
+      <span class="brand">MOOON <span>KEBAB</span></span>
+      <span class="context">Menu TV</span>
+    </header>
+    <main>
+      <section id="choose-video" aria-labelledby="video-title">
+        <h1 id="video-title">Wybierz ekran</h1>
+        <div class="screens">
+          <button class="screen" type="button" data-screen="1">
+            <img src="./media/1.jpg" alt="" width="640" height="360">
+            <span>Wideo 1</span>
+          </button>
+          <button class="screen" type="button" data-screen="2">
+            <img src="./media/2.jpg" alt="" width="640" height="360">
+            <span>Wideo 2</span>
+          </button>
+        </div>
+      </section>
+      <section id="choose-quality" aria-labelledby="quality-title" hidden>
+        <button id="back-to-screens" class="back" type="button">Zmień wideo</button>
+        <h1 id="quality-title" tabindex="-1">Wybierz jakość</h1>
+        <p id="selected-screen"></p>
+        <div class="quality-grid" aria-label="Rozdzielczość">
+          <button type="button" data-quality="2160" aria-pressed="false"><strong>4K</strong><span>3840 × 2160</span></button>
+          <button type="button" data-quality="1080" aria-pressed="false"><strong>1080p</strong><span>1920 × 1080</span></button>
+          <button type="button" data-quality="720" aria-pressed="false"><strong>720p</strong><span>1280 × 720</span></button>
+        </div>
+        <button id="play" class="primary" type="button" disabled>Odtwórz w pętli</button>
+      </section>
+      <section id="watch" aria-labelledby="now-playing" hidden>
+        <div class="player-heading">
+          <h1 id="now-playing" tabindex="-1"></h1>
+          <button id="back-to-quality" class="back" type="button">Zmień jakość</button>
+        </div>
+        <video id="video" controls loop playsinline preload="none"></video>
+        <p id="player-message" role="status"></p>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
