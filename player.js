@@ -43,11 +43,19 @@ play.addEventListener('click', () => {
   video.poster = './media/' + activeScreen.dataset.screen + '.jpg';
   video.src = './media/' + activeScreen.dataset.screen + '-' + activeQuality.dataset.quality + '.mp4';
   show(watch, title);
+
+  const canRequestFullscreen = document.fullscreenEnabled && typeof video.requestFullscreen === 'function';
+  if (!canRequestFullscreen && typeof video.webkitEnterFullscreen === 'function') {
+    video.playsInline = false;
+  }
   video.play().catch((error) => {
     if (error.name === 'NotAllowedError' && !watch.hidden) {
       message.textContent = 'Użyj przycisku odtwarzania na wideo.';
     }
   });
+  if (canRequestFullscreen) {
+    video.requestFullscreen().catch(() => {});
+  }
 });
 
 video.addEventListener('error', () => {
